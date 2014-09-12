@@ -26,6 +26,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
     lblMessage.text = [self diffFromDate:[NSDate date] toDate:datePicker.date];
 //    [self diffHoursAboutStringFromDate:[NSDate date] toDate:[NSDate date]];
+    [self printNumber];
 }
 
 - (void)didReceiveMemoryWarning
@@ -92,5 +93,19 @@
 }
 - (IBAction)datePickerValueChanged:(id)sender{
         lblMessage.text = [self diffFromDate:[NSDate date] toDate:datePicker.date];
+}
+
+- (void)printNumber{
+    int n = -123450;
+    NSDictionary *dic = @{@"-1": @"NAGATIVE", @"0":@"POSITIVE"};
+    /// shift-right 7 times because int with 32bits
+    n = n >> INT_MAX;  // 1
+    n = n >> INT_MAX;  // 2
+    n = n >> INT_MAX;  // 3
+    n = n >> INT_MAX;  // 4
+    n = n >> INT_MAX;  // 5
+    n = n >> INT_MAX;  // 6
+    n = n >> INT_MAX;  // 7
+    NSLog(@"%@", [dic objectForKey:[NSString stringWithFormat:@"%d", n]]);
 }
 @end
